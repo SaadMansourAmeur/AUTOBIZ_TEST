@@ -17,20 +17,31 @@
   	<form action="/update" method="POST">
 	  	{% for user in users %}
 	    	<tr>
-	    		<td>{% if user.gender == 1 %} Homme {% elseif user.gender == 2 %} Femme {% endif %}</td>
-				<td>{{ user.firstname }}</td>
-				<td>{{ user.lastname }}</td>
-				<td>{{ user.birthDate |date("m/d/Y") }}</td>
-				<td><img width="50px" height="50px" src="{{ user.imagePath }}" /></td>		
-				<td>{{ user.createdAT |date("m/d/Y") }}</td>
-				<td>
-          <button type="submit"  value="{{user.id }}" name="userId" >Update</button>
-          <td>	
+  	    	<td>{% if user.gender == 1 %} Homme {% elseif user.gender == 2 %} Femme {% endif %}</td>
+  				<td>{{ user.firstname }}</td>
+  				<td>{{ user.lastname }}</td>
+  				<td>{{ user.birthDate |date("m/d/Y") }}</td>
+  				<td><img width="50px" height="50px" src="{{ user.imagePath }}" /></td>		
+  				<td>{{ user.createdAT |date("m/d/Y") }}</td>
+  				<td>
+            <button type="submit"  value="{{user.id }}" name="userId" >Update</button>
+          <td>
+          <td>
+            <input type="button" value="Delete"onclick="Delete({{user.id }});" />
+          <td>
 	    	</tr>
 		{% endfor %}	
   	</form>
   </tbody>
 </table>
+<script type="text/javascript">
+  
+function Delete(id)
+{
+  window.location = "delete/" + id;
+}
+
+</script>
 
 
 

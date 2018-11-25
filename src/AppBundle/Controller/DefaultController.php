@@ -68,6 +68,7 @@ class DefaultController extends Controller
                 $entityManager->persist($user);
                 $entityManager->flush();
 
+                return $this->redirectToRoute('allUsers');
             }
         }
 
@@ -172,4 +173,19 @@ class DefaultController extends Controller
          return $this->render('default/updateUser.html.twig', array('user' => $user, 'form' => $formUpdate->createView()));
     }
 
+
+     /**
+     * @Route("/delete/{id}", name="deleteUser")
+     */
+    public function deleteUserAction($id, Request $request)
+    {
+        if($id != null){
+            $em = $this->getDoctrine()->getEntityManager();
+            $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+
+            $em->remove($user);
+            $em->flush();
+        }
+        return $this->redirectToRoute('allUsers');   
+    }
 }
