@@ -21,8 +21,17 @@
         </div>
 
         <div>
-            {{ form_widget(form.imageId) }}
-            {{ form_errors(form.imageId) }}
+            <table>
+                <tr>
+                    <td>
+                        {{ form_widget(form.imageId, {'value' : user.imagePath }) }}
+                        {{ form_errors(form.imageId) }}
+                    </td>
+                    <td>
+                        <img width="50px" height="50px" src="{{ user.imagePath }}" />
+                    </td>
+                </tr>
+            </table>
         </div>
 
         <input type="submit" value="Submit">
