@@ -1,0 +1,31 @@
+<h1>get all users</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Gender</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>BirthDate</th>
+      <th>Image</th>
+      <th>CreatedAt</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    	<tr>
+    		<td>{% if user.gender == 1 %} Homme {% elseif user.gender == 2 %} Femme {% endif %}</td>
+			<td>{{ user.firstname }}</td>
+			<td>{{ user.lastname }}</td>
+			<td>{{ user.birthDate |date("m/d/Y") }}</td>
+			<td><img width="50px" height="50px" src="{{ user.imagePath }}" /></td>		
+			<td>{{ user.createdAT |date("m/d/Y") }}</td>	
+    	</tr>
+	{% endfor %}
+  </tbody>
+</table>
+
+
+

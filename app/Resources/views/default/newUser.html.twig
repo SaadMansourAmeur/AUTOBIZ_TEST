@@ -1,11 +1,8 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    {% form_theme form 'bootstrap_4_layout.html.twig' %}
-
-
-    {{ form_start(form) }}
-
+ 
+     {{ form_start(form) }}
         <div>
             {{ form_widget(form.gender) }}
             {{ form_errors(form.gender) }}
@@ -32,8 +29,11 @@
             {{ form_errors(form.imageId) }}
         </div>
 
-        
         <input type="submit" value="Submit">
         
     {{ form_end(form) }}
 {% endblock %}
+
+
+
+   

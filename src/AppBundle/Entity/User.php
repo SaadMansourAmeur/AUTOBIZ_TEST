@@ -64,6 +64,11 @@ class User
      */
     private $imageId;
 
+    /**
+     * @var string
+     */
+    private $imagePath;
+
 
     /**
      * Get id
@@ -217,6 +222,30 @@ class User
     public function getImageId()
     {
         return $this->imageId;
+    }
+
+    /**
+     * Set imagePath
+     *
+     * @param string $path
+     *
+     * @return string
+     */
+    public function setImagePath($path)
+    {
+        $this->imagePath = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get imagePath
+     *
+     * @return string
+     */
+    public function getImagePath()
+    {
+        return $this->imagePath;
     }
 }
 

@@ -38,7 +38,7 @@ class UserType extends AbstractType
                     new NotBlank(array("message" => "Please give a Subject")),
                 )
             ))
-            ->add('imageId', TextType::class, array('attr' => array('placeholder' => 'imageId'),
+            ->add('imageId', TextType::class, array('attr' => array('placeholder' => 'image url http'),
                 'constraints' => array(
                     new NotBlank(array("message" => "Please give a Subject")),
                 )

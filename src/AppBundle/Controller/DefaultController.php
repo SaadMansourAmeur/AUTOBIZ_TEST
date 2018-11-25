@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Image;
 use \Datetime;
+use AppBundle\Controller\Action;
 
 class DefaultController extends Controller
 {
@@ -26,9 +27,9 @@ class DefaultController extends Controller
     /**
      * @Route("/new", name="newUser")
      */
-    public function newAction(Request $request)
+    public function newUserAction(Request $request)
     {
-
+     
         // Create the form according to the FormType created previously.
         // And give the proper parameters
         $form = $this->createForm('AppBundle\Form\UserType',null,array(
@@ -73,5 +74,20 @@ class DefaultController extends Controller
          return $this->render('default/newUser.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+
+     /**
+     * @Route("/all", name="AllUsers")
+     */
+    public function getAllUserAction()
+    {
+          $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+          foreach ($users as $user) {
+               $image = $this->getDoctrine()->getRepository(Image::class)->find($user->getImageId());
+                $user->setImagePath($image->getPath());
+          }
+
+          return $this->render('default/AllUser.html.twig', array('users' =>   $users));
     }
 }
